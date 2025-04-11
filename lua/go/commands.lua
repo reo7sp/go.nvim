@@ -129,15 +129,6 @@ end
 
 return {
   add_cmds = function()
-    vim.cmd([[
-    augroup go.filetype
-    autocmd!
-      autocmd FileType go setlocal omnifunc=v:lua.vim.lsp.omnifunc
-      autocmd FileType go au QuickFixCmdPost  [^l]* nested cwindow
-      autocmd FileType go au QuickFixCmdPost    l* nested lwindow
-    augroup end
-    ]])
-
     create_cmd('GoMake', function(_)
       require('go.asyncmake').make()
     end)
